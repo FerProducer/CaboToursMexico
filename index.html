@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CaboToursMexico | Renta de Yates y Barcos en Cabo San Lucas</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/FerProducer/CaboToursMexico/refs/heads/main/Logo%20cabo%20tours.png" />
+  <style>
+    :root {
+      --azul-mar: #004c6d;
+      --turquesa: #00b8b0;
+      --arena: #f9f5ef;
+      --blanco: #ffffff;
+      --gris: #555;
+      --negro: #1c1c1c;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background-color: var(--arena);
+      color: var(--negro);
+      overflow-x: hidden;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--azul-mar), var(--turquesa));
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--arena);
+    }
+
+    .hero {
+      background: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      background-color: var(--turquesa);
+      color: white;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: var(--azul-mar);
+    }
+
+    section {
+      padding: 4rem 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
+      color: var(--azul-mar);
+    }
+
+    .fleet {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .yacht {
+      background: var(--blanco);
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .yacht:hover {
+      transform: translateY(-5px);
+    }
+
+    .yacht img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .yacht-content {
+      padding: 1.5rem;
+    }
+
+    .yacht-content h3 {
+      color: var(--azul-mar);
+      margin-bottom: 0.5rem;
+    }
+
+    .yacht-content p {
+      color: var(--gris);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .price {
+      font-weight: 700;
+      color: var(--turquesa);
+      margin-bottom: 1rem;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .about img {
+      flex: 1 1 400px;
+      border-radius: 20px;
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .about-text {
+      flex: 1 1 400px;
+    }
+
+    .about-text h3 {
+      color: var(--azul-mar);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: var(--azul-mar);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      background: var(--turquesa);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .contact h3 {
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      margin-bottom: 1rem;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 999;
+      transition: transform 0.3s;
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+      .about {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CaboToursMexico</h1>
+    <nav>
+      <a href="#home">Inicio</a>
+      <a href="#fleet">Yates</a>
+      <a href="#about">Nosotros</a>
+      <a href="#contact">Contacto</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+       <background-color: #000; 
+  color: #fff; 
+  text-align: center; 
+  padding: 40px 20px;
+">
+  <img 
+    src="https://raw.githubusercontent.com/FerProducer/CaboToursMexico/refs/heads/main/Logo%20cabo%20tours.png" 
+    alt="CaboToursMexico Logo" 
+    style="
+      height:60px; 
+      margin-bottom:15px; 
+      display:block; 
+      margin-left:auto; 
+      margin-right:auto; 
+      filter: brightness(0) invert(1);
+    ">
+      <h2>Renta de Yates y Barcos de Lujo en Cabo San Lucas</h2>
+      <p>Disfruta del mar, el sol y los atardeceres más espectaculares en el fin del mundo. Experiencias privadas, seguras y personalizadas para ti.</p>
+      <button class="btn" onclick="window.location.href='#fleet'">Ver Yates Disponibles</button>
+    </div>
+  </section>
+
+  <section id="fleet">
+    <h2 class="section-title">Nuestra Flota</h2>
+    <div class="fleet">
+      <div class="yacht">
+        <img src="https://images.unsplash.com/photo-1510074377623-8cf13fb86c08" alt="Yate de lujo 40ft">
+        <div class="yacht-content">
+          <h3>Yate Pacific Dream – 40ft</h3>
+          <p>Perfecto para escapadas románticas o pequeños grupos. Incluye capitán, bebidas, y equipo de snorkel.</p>
+          <div class="price">Desde $450 USD / 3 hrs</div>
+          <button class="btn" onclick="window.open('https://wa.me/526241234567','_blank')">Reservar Ahora</button>
+        </div>
+      </div>
+
+      <div class="yacht">
+        <img src="https://images.unsplash.com/photo-1508739826987-b79cd8b7da12" alt="Catamarán 55ft">
+        <div class="yacht-content">
+          <h3>Catamarán SeaVibe – 55ft</h3>
+          <p>Ideal para grupos grandes, fiestas o tours al Arco. Incluye DJ, open bar y servicio premium.</p>
+          <div class="price">Desde $950 USD / 4 hrs</div>
+          <button class="btn" onclick="window.open('https://wa.me/526241234567','_blank')">Reservar Ahora</button>
+        </div>
+      </div>
+
+      <div class="yacht">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt="Yate deportivo 70ft">
+        <div class="yacht-content">
+          <h3>Yate Majesty – 70ft</h3>
+          <p>Lujo total con camarotes, jacuzzi y chef a bordo. La experiencia definitiva en Cabo.</p>
+          <div class="price">Desde $1,750 USD / 5 hrs</div>
+          <button class="btn" onclick="window.open('https://wa.me/526241234567','_blank')">Reservar Ahora</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <img src="https://images.unsplash.com/photo-1528569937393-ee892b976859" alt="Equipo CaboToursMexico">
+    <div class="about-text">
+      <h3>Experiencias Náuticas Premium</h3>
+      <p>En <strong>CaboToursMexico</strong> somos expertos en crear momentos inolvidables en el mar. Nuestra flota combina lujo, seguridad y servicio personalizado.  
+      Operamos directamente desde la Marina de Cabo San Lucas y trabajamos con los más altos estándares internacionales.</p>
+      <p>Ya sea una escapada romántica, un paseo familiar o una fiesta privada, diseñamos cada detalle para que vivas Cabo como nunca antes.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h3>¿Listo para zarpar?</h3>
+    <p>Contáctanos para cotizar o personalizar tu experiencia náutica.</p>
+    <p>📞 +52 639 134 2577 &nbsp; | &nbsp; ✉️ info@cabotoursmexico.com</p>
+    <button class="btn" onclick="window.open('https://wa.me/526391342577','_blank')">Enviar Mensaje</button>
+  </section>
+
+  <footer>
+    © 2025 CaboToursMexico. Todos los derechos reservados.  
+    <br />Renta de yates y barcos en Cabo San Lucas, B.C.S. México.
+    <background-color: #000; 
+  color: #fff; 
+  text-align: center; 
+  padding: 40px 20px;
+">
+  <img 
+    src="https://raw.githubusercontent.com/FerProducer/CaboToursMexico/refs/heads/main/Logo%20cabo%20tours.png" 
+    alt="CaboToursMexico Logo" 
+    style="
+      height:60px; 
+      margin-bottom:15px; 
+      display:block; 
+      margin-left:auto; 
+      margin-right:auto; 
+      filter: brightness(0) invert(1);
+    ">
+  </footer>
+
+  <a href="https://wa.me/526241234567" class="whatsapp" target="_blank">💬</a>
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'es', includedLanguages: 'en,fr,de,it,pt', layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+    'google_translate_element'
+  );
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
